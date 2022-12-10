@@ -1,0 +1,108 @@
+import bs4
+from bs4 import BeautifulSoup
+import requests
+import json
+import secrets
+
+global location
+global API_KEY
+
+CACHE_f = "yelp.json"
+CACHE_dict = {}
+
+YELP_URL_b = "https://api.yelp.com/v3/businesses/search?location="
+API_KEY = secrets.API_KEY
+headers = {'authorization': "Bearer " + API_KEY}
+
+def read_json(filepath, encoding='utf-8'):
+    """Reads a JSON document, decodes the file content, and returns a list or dictionary if
+    provided with a valid filepath.
+
+    Parameters:
+        filepath: str
+            path to file
+        encoding: str
+            name of encoding used to decode the file
+
+    Returns:
+        dict/list: dict or list representations of the decoded JSON document
+    """
+
+    with open(filepath, 'r', encoding=encoding) as file_obj:
+        return json.load(file_obj)
+
+def write_json(filepath, data, encoding='utf-8', ensure_ascii=False, indent=2):
+    """Serializes object as JSON. Writes content to the provided filepath.
+
+    Parameters:
+        filepath: str
+            the path to the file
+        data: dict/list
+            the data to be encoded as JSON and written to the file
+        encoding: str
+            name of encoding used to encode the file
+        ensure_ascii: str 
+            if False non-ASCII characters are printed as is;
+                            otherwise non-ASCII characters are escaped.
+        indent: int
+            number of "pretty printed" indention spaces applied to encoded JSON
+
+    Returns:
+        None
+    """
+    # TODO
+    # Uncomment the below lines and correct the mistakes
+
+    with open(filepath, 'w', encoding=encoding) as file_obj:
+        json.dump(data, file_obj, ensure_ascii=ensure_ascii, indent=indent)
+
+def open_cache():
+    ''' Open the cache file if exists and load JSON file into
+    the CACHE_DICT dictionary or create a new cache dictionary
+    
+    Parameters
+    ----------
+    None
+    
+    Returns
+    ----------
+    The opened cache: dict
+    '''
+    try:
+        cache_dict = read_json(CACHE_f)
+    except:
+        cache_dict = {}
+    return cache_dict
+
+
+def save_cache(cache_dict):
+    ''' Save cache to disk
+    
+    Parameters
+    ----------
+    cache_dict: dict
+    
+    Returns
+    ----------
+    None
+    '''
+    write_json(CACHE_f, cache_dict)
+
+def make_request(baseurl, params):
+    '''Make a request to the Web API using the baseurl and params
+    
+    Parameters
+    ----------
+    baseurl: string
+        The URL for the API endpoint
+    params: dictionary
+        A dictionary of param:value pairs
+    
+    Returns
+    -------
+    dict
+        the data returned from making the request in the form of 
+        a dictionary
+    '''
+    response = requests.get(baseurl, params=params, headers=headers)
+    return response.json()
