@@ -15,7 +15,7 @@ Replace `MAPBOX_TOKEN` with your key and run the program.
 Tree data structure. The leaf node will be the information of restaurants, the attribute node will be the restaurants attribution.
 Every time run the python code, will reorganize the data (stored in cache or requested from web) into a tree as shown below:
 
-![picture](https://github.com/yiihanw/Final-Proj-python/blob/main/507_tree.png)
+![picture](https://github.com/yiihanw/Final-Proj-python/blob/main/507_tree.jpg)
 
 ## Demo
 https://youtu.be/7m7OKD7_wHI
