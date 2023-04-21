@@ -1,15 +1,16 @@
 # SI 507 2022 Fall
 
-## Introduction
-Since I am a big of finding good restaurants while travelling around cities, this final project aims to query the restaurants of some famous cities. Based on the requirements of users, this project will sort the restaurants with some information, including name, location, category, price, rating, customs reviews, etc.
+## INTRODUCTION
+This project is a restaurant search program that help people find the desired restaurant. In order to acheve this goal, it need to get  access of the restaurant data from the website, then organizes that data into a tree. By asking users questions (about price, rate location, etc.) until it provides a set of recommendations that meet the user options.
 
-## Preparation
-- Yelp Fusion API: `https://api.yelp.com/v3/businesses/search?`
-Visit `https://www.yelp.com/developers/documentation/v3/authentication` to get your own API Key. Replace the `API_KEY` in the `Final.py` file to run this project. Here is a `tutorial` which will be helpful to apply for the API KEY:
-`https://spectralops.io/blog/yelp-api-guide/`
-- Wikipedia web: `https://en.wikipedia.org/wiki/List_of_United_States_cities_by_population`
-- Mapbox TOKEN: Access this link below to get a mapbox token to creat restaurant maps. `https://www.mapbox.com/`
-Replace `MAPBOX_TOKEN` with your key and run the program.
+
+## DATA OURCE
+- Yelp Fusion API: 'https://api.yelp.com/v3/businesses/search?'
+
+- Mapbox TOKEN: 'https://www.mapbox.com/'
+
+- Wikipedia: 'https://en.wikipedia.org/wiki/List_of_United_States_cities_by_population' 
+
 
 ## Data Structure
 Tree data structure. The leaf node will be the information of restaurants, the attribute node will be the restaurants attribution.
